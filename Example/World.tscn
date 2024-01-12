@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://ie6s4wb27ao"]
+
+[ext_resource type="PackedScene" uid="uid://x0qcbntngd67" path="res://Example/Prefabs/Player.tscn" id="1_efql4"]
+[ext_resource type="Script" path="res://Example/World.gd" id="1_ru4s4"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_ru4s4")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 70.0
+offset_top = 98.0
+offset_right = 191.0
+offset_bottom = 173.0
+text = "Health: 100
+MaxHealth: 100
+Strength: 100"
+
+[node name="Actions" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 852.0
+offset_top = 108.0
+offset_right = 1068.0
+offset_bottom = 428.0
+
+[node name="AddMaxHp" type="Button" parent="CanvasLayer/Actions"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Add MaxHp Modifier."
+
+[node name="RemoveMaxHp" type="Button" parent="CanvasLayer/Actions"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Remove MaxHp Modifier."
+
+[node name="AddHealth" type="Button" parent="CanvasLayer/Actions"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Add Health Modifier."
+
+[node name="RemoveHealth" type="Button" parent="CanvasLayer/Actions"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Remove Health Modifier."
+
+[node name="AddStrength" type="Button" parent="CanvasLayer/Actions"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Add Strength Modifier."
+
+[node name="RemoveStrength" type="Button" parent="CanvasLayer/Actions"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Remove Strength Modifier."
+
+[node name="Player" parent="." instance=ExtResource("1_efql4")]
+unique_name_in_owner = true
+position = Vector2(132, 263)

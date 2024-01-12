@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Stat" load_steps=2 format=3 uid="uid://b4o6wcmwc8xts"]
+
+[ext_resource type="Script" path="res://addons/FlowerStats/Scripts/Classes/Stat.gd" id="1_q45b0"]
+
+[resource]
+script = ExtResource("1_q45b0")
+id = &"MaxHp"
+base_value = 100.0

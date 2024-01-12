@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Unit" load_steps=4 format=3 uid="uid://chx8xgo7ifo6s"]
+
+[ext_resource type="Script" path="res://addons/FlowerStats/Scripts/Classes/Unit.gd" id="1_snej7"]
+[ext_resource type="Resource" uid="uid://bokt0i28ay2q" path="res://Example/Classes/Attributes/Health.tres" id="1_t2o6t"]
+[ext_resource type="Resource" uid="uid://c24ostt0icvv" path="res://Example/Classes/Stats/Strength.tres" id="3_v6nxu"]
+
+[resource]
+script = ExtResource("1_snej7")
+name = "Player"
+attr = Array[Resource("res://addons/FlowerStats/Scripts/Classes/Attribute.gd")]([ExtResource("1_t2o6t")])
+stats = Array[Resource("res://addons/FlowerStats/Scripts/Classes/Stat.gd")]([ExtResource("3_v6nxu")])

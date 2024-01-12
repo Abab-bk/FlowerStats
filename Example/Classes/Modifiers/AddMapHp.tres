@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Modifier" load_steps=3 format=3 uid="uid://cx2nudwi1aeyo"]
+
+[ext_resource type="Script" path="res://addons/FlowerStats/Scripts/Modifier.gd" id="1_jsonv"]
+[ext_resource type="Resource" uid="uid://b4o6wcmwc8xts" path="res://Example/Classes/Stats/MaxHp.tres" id="2_4x8ot"]
+
+[resource]
+script = ExtResource("1_jsonv")
+target = ExtResource("2_4x8ot")
+type = 0
+value = 10.0

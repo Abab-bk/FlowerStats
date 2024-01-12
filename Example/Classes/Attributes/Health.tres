@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Attribute" load_steps=3 format=3 uid="uid://bokt0i28ay2q"]
+
+[ext_resource type="Resource" uid="uid://b4o6wcmwc8xts" path="res://Example/Classes/Stats/MaxHp.tres" id="1_4a3vw"]
+[ext_resource type="Script" path="res://addons/FlowerStats/Scripts/Classes/Attribute.gd" id="1_6h643"]
+
+[resource]
+script = ExtResource("1_6h643")
+id = &"Health"
+min_value = 0.0
+max_value = ExtResource("1_4a3vw")

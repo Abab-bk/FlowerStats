@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Unit" load_steps=4 format=3 uid="uid://c24bh5bd3k4ch"]
+
+[ext_resource type="Resource" uid="uid://deufuu1hw1i0a" path="res://Example/Classes/MobStats/MobHealth.tres" id="1_g8fau"]
+[ext_resource type="Script" path="res://addons/FlowerStats/Scripts/Classes/Unit.gd" id="1_oi34p"]
+[ext_resource type="Resource" uid="uid://br8ca3btn6k1e" path="res://Example/Classes/MobStats/MobStrength.tres" id="3_4vx6i"]
+
+[resource]
+script = ExtResource("1_oi34p")
+name = "Mob"
+attr = Array[Resource("res://addons/FlowerStats/Scripts/Classes/Attribute.gd")]([ExtResource("1_g8fau")])
+stats = Array[Resource("res://addons/FlowerStats/Scripts/Classes/Stat.gd")]([ExtResource("3_4vx6i")])

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Stat" load_steps=2 format=3 uid="uid://c24ostt0icvv"]
+
+[ext_resource type="Script" path="res://addons/FlowerStats/Scripts/Classes/Stat.gd" id="1_ef6gp"]
+
+[resource]
+script = ExtResource("1_ef6gp")
+id = &"Strength"
+base_value = 10.0
