@@ -20,16 +20,14 @@ func compute() -> void:
     if computed:
         uninstall()
         return
-    
-    print("modifier 计算")
 
     if type == TYPE.CONSTANT:
-        target.final_value += value
+        target.constant_value += value
         computed = true
         return
     
     if type == TYPE.PERCENTAGE:
-        target.final_value *= (1.0 + value)
+        target.percentage_value += value
         computed = true
         return
 
@@ -37,16 +35,21 @@ func compute() -> void:
 func uninstall(_recompute:bool = true) -> void:
     if not computed:
         return
-
-    print("modifier 卸载")
     
     match type:
         TYPE.CONSTANT:
-            target.final_value -= value
+            target.constant_value -= value
             computed = false
         TYPE.PERCENTAGE:
-            target.final_value /= (1.0 + value)
+            target.percentage_value -= value
             computed = false
     
     if _recompute:
         compute()
+
+
+func push_self_in_target() -> void:
+    target.push_modifier(self)
+
+func pop_self_in_target() -> void:
+    target.pop_modifier_in_stack(self)

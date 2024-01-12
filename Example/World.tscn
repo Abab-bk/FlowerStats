@@ -19,10 +19,10 @@ MaxHealth: 100
 Strength: 100"
 
 [node name="Actions" type="VBoxContainer" parent="CanvasLayer"]
-offset_left = 852.0
+offset_left = 804.0
 offset_top = 108.0
-offset_right = 1068.0
-offset_bottom = 428.0
+offset_right = 1099.0
+offset_bottom = 536.0
 
 [node name="AddMaxHp" type="Button" parent="CanvasLayer/Actions"]
 unique_name_in_owner = true
@@ -35,6 +35,18 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "Remove MaxHp Modifier."
+
+[node name="AddMaxHpPercentage" type="Button" parent="CanvasLayer/Actions"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Add MaxHp Percentage Modifier."
+
+[node name="RemoveMaxHpPercentage" type="Button" parent="CanvasLayer/Actions"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Remove MaxHp Percentage Modifier."
 
 [node name="AddHealth" type="Button" parent="CanvasLayer/Actions"]
 custom_minimum_size = Vector2(0, 50)
