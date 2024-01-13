@@ -8,6 +8,11 @@ var effect_list:Array[StatusEffect] = []
 
 
 func apply(_effect:StatusEffect) -> void:
+    # 检查 max_stack
+    if check_same_element_count(effect_list, _effect) >= _effect.max_stack:
+        print("max stack!")
+        return
+
     effect_list.append(_effect)
     # 添加timer
     var _timer:Timer = create_timer(_effect.duration)
@@ -28,6 +33,15 @@ func apply(_effect:StatusEffect) -> void:
     _effect.start(target_node, target.unit)
     _timer.start()
 
+
+func check_same_element_count(_array:Array[StatusEffect], _effect:StatusEffect) -> int:
+    var _count:int = 0
+
+    for _element:StatusEffect in _array:
+        if _element.id == _effect.id:
+            _count += 1
+    
+    return _count
 
 
 func create_timer(_time:float) -> Timer:
