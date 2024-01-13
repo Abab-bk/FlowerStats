@@ -10,7 +10,6 @@ var effect_list:Array[StatusEffect] = []
 func apply(_effect:StatusEffect) -> void:
     # 检查 max_stack
     if check_same_element_count(effect_list, _effect) >= _effect.max_stack:
-        print("max stack!")
         return
 
     effect_list.append(_effect)

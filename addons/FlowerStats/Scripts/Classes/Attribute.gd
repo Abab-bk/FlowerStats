@@ -11,6 +11,10 @@ signal value_changed(value:float)
 
 var _value:float = 0:
     set(v):
+        if v <= min_value:
+            _value = min_value
+            value_changed.emit(_value)
+            return
         _value = min(max_value.get_value(), v)
         value_changed.emit(_value)
 
