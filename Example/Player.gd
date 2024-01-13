@@ -2,6 +2,11 @@ extends CharacterBody2D
 
 @onready var modifier_node:ModifierNode = %ModifierNode
 @onready var unit_node:UnitNode = %UnitNode
+@onready var status_effect_applier:StatusEffectApplier = %StatusEffectApplier
+
+
+func add_status_effect(_effect:StatusEffect) -> void:
+    status_effect_applier.apply(_effect)
 
 
 func add_modifier(_modifier:Modifier) -> void:
@@ -13,10 +18,7 @@ func remove_modifier(_modifier:Modifier) -> void:
 
 
 func get_attr_by_id(_id:StringName) -> Attribute:
-    for _attr:Attribute in unit_node.unit.attr:
-        if _attr.id == _id:
-            return _attr
-    return null
+    return unit_node.unit.get_attr_by_id(_id)
 
 
 func get_stat_by_id(_id:StringName) -> Stat:

@@ -7,5 +7,5 @@
 [resource]
 script = ExtResource("1_oi34p")
 name = "Mob"
-attr = Array[Resource("res://addons/FlowerStats/Scripts/Classes/Attribute.gd")]([ExtResource("1_g8fau")])
+attrs = Array[Resource("res://addons/FlowerStats/Scripts/Classes/Attribute.gd")]([ExtResource("1_g8fau")])
 stats = Array[Resource("res://addons/FlowerStats/Scripts/Classes/Stat.gd")]([ExtResource("3_4vx6i")])

@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://x0qcbntngd67"]
+[gd_scene load_steps=8 format=3 uid="uid://x0qcbntngd67"]
 
 [ext_resource type="Script" path="res://Example/Player.gd" id="1_dp18k"]
 [ext_resource type="Texture2D" uid="uid://bd3vk0jrx5mfp" path="res://icon.svg" id="1_jna7r"]
 [ext_resource type="Script" path="res://addons/FlowerStats/Scripts/Nodes/UnitNode.gd" id="2_8yjs4"]
 [ext_resource type="Resource" uid="uid://chx8xgo7ifo6s" path="res://Example/Classes/Units/Player.tres" id="3_nspru"]
 [ext_resource type="Script" path="res://addons/FlowerStats/Scripts/Nodes/ModifierNode.gd" id="4_kgyue"]
+[ext_resource type="Script" path="res://addons/FlowerStats/Scripts/Nodes/StatusEffectApplier.gd" id="6_70o03"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8oju8"]
 size = Vector2(122, 124)
@@ -30,3 +31,9 @@ unique_name_in_owner = true
 script = ExtResource("4_kgyue")
 source = NodePath("../UnitNode")
 target = NodePath("../UnitNode")
+
+[node name="StatusEffectApplier" type="Node" parent="Stats" node_paths=PackedStringArray("target", "target_node")]
+unique_name_in_owner = true
+script = ExtResource("6_70o03")
+target = NodePath("../UnitNode")
+target_node = NodePath("../..")

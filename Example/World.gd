@@ -4,6 +4,8 @@ extends Node2D
 @onready var remove_max_hp_btn:Button = %RemoveMaxHp
 @onready var add_max_hp_percentage_btn:Button = %AddMaxHpPercentage
 @onready var remove_max_hp_percentage_btn:Button = %RemoveMaxHpPercentage
+@onready var add_burning_status_effect_btn:Button = %AddBurningStatusEffect
+
 
 @onready var player:CharacterBody2D = %Player
 @onready var label:Label = %Label
@@ -61,6 +63,9 @@ func _ready() -> void:
         _percentage_modifier_count -= 1
         player.remove_modifier(percentage_modifier_containers[_percentage_modifier_count].modifier)
         )
+    add_burning_status_effect_btn.pressed.connect(func():
+        player.add_status_effect(load("res://Example/Classes/Effects/Burn.tres").duplicate(true))
+        )
     
 
 
@@ -69,4 +74,4 @@ func _physics_process(_delta:float) -> void:
     Health: %s
     MaxHealth: %s
     Strength: %s
-    """ % ["11", str(player.get_attr_by_id("Health").max_value.final_value), "11"]
+    """ % [str(player.get_attr_by_id("Health").get_value()), str(player.get_attr_by_id("Health").max_value.final_value), "test"]
