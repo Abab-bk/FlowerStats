@@ -3,12 +3,14 @@ class_name Stat extends Resource
 @export var id:StringName
 @export var base_value:float:
     set(v):
+        base_value = v
         if final_value < base_value:
             final_value = base_value
 
-var final_value:float = 0.0
+            recompute_final_value()
 
-@export var stack:Array[Modifier] = []
+var final_value:float = 0.0
+var stack:Array[Modifier] = []
 
 var percentage_value:float = 0.0:
     set(v):
@@ -23,7 +25,7 @@ var constant_value:float = 0.0:
 
 func recompute_final_value() -> void:
     final_value = base_value
-    final_value = final_value + constant_value * (1.0 + percentage_value)
+    final_value = (final_value + constant_value) * (1.0 + percentage_value)
 
 
 func push_modifier(_modifier:Modifier) -> void:
@@ -48,4 +50,7 @@ func pop_modifier_in_stack(_modifier:Modifier) -> void:
 
     for _temp_modifier:Modifier in _temp_list:
         _temp_modifier.compute()
-    
+
+
+func get_value() -> float:
+    return final_value

@@ -48,8 +48,17 @@ func uninstall(_recompute:bool = true) -> void:
         compute()
 
 
+func get_value() -> float:
+    return value
+
+
 func push_self_in_target() -> void:
     target.push_modifier(self)
 
+
 func pop_self_in_target() -> void:
     target.pop_modifier_in_stack(self)
+
+
+func set_target(_target:Stat) -> void:
+    target = _target

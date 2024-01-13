@@ -6,4 +6,3 @@
 script = ExtResource("1_q45b0")
 id = &"MaxHp"
 base_value = 100.0
-stack = Array[Resource("res://addons/FlowerStats/Scripts/Modifier.gd")]([])
