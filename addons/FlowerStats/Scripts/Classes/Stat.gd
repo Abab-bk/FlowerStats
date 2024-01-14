@@ -8,6 +8,7 @@ class_name Stat extends Resource
             final_value = base_value
 
             recompute_final_value()
+# @export var formula:Formula
 
 var final_value:float = 0.0
 var stack:Array[Modifier] = []
@@ -25,6 +26,10 @@ var constant_value:float = 0.0:
 
 func recompute_final_value() -> void:
     final_value = base_value
+
+    # if formula:
+    #     final_value = formula.execute(final_value)
+
     final_value = (final_value + constant_value) * (1.0 + percentage_value)
 
 
@@ -40,8 +45,9 @@ func pop_modifier_in_stack(_modifier:Modifier) -> void:
     if _modifier_index == -1:
         print("modifier not exist in stack.")
         return
-
+    
     var _temp_list:Array[Modifier] = stack.slice(0, _modifier_index)
+    _temp_list.reverse()
     for _temp_modifier:Modifier in _temp_list:
         _temp_modifier.uninstall()
 

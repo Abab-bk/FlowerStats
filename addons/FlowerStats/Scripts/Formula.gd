@@ -3,8 +3,16 @@ class_name Formula extends Resource
 # Source Target | source.stats[attack] - target.stats[defense] -> source, target = unit
 @export var formula:String
 
+var source:Unit
+var target:Unit
 
-func execute(_source:Unit, _target:Unit) -> float:
+
+func set_source_and_target(_source:Unit, _target:Unit) -> void:
+    source = _source
+    target = _target
+
+
+func execute(_value:float, _source:Unit = source, _target:Unit = target) -> float:
     if formula == "":
         push_error("Formula is empty")
         return 0.0
