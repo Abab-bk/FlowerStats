@@ -9,3 +9,4 @@ script = ExtResource("1_snej7")
 name = "Player"
 attrs = Array[Resource("res://addons/FlowerStats/Scripts/Classes/Attribute.gd")]([ExtResource("1_t2o6t")])
 stats = Array[Resource("res://addons/FlowerStats/Scripts/Classes/Stat.gd")]([ExtResource("3_v6nxu")])
+tags = Array[StringName]([])

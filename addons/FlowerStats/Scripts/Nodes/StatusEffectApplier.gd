@@ -1,10 +1,11 @@
+@icon("../../Icons/EffectNode.svg")
 class_name StatusEffectApplier extends Node
 
 @export_category("Status Effect")
 @export var target:UnitNode
 @export var target_node:Node
 
-var effect_list:Array[StatusEffect] = []
+@export var effect_list:Array[StatusEffect] = []
 
 
 func apply(_effect:StatusEffect) -> void:
@@ -21,13 +22,27 @@ func apply(_effect:StatusEffect) -> void:
     # 添加场景
     if _effect.scene:
         var _scene = _effect.scene.instantiate()
-        target_node.add_child(_scene)
+        
+        if target_node:
+            target_node.add_child(_scene)
+        
         _effect._instance_scene = _scene
     
-    _effect.finished.connect(func():
-        effect_list.erase(_effect)
-        _timer.queue_free()
-        )
+    if _effect.action:
+        var _action_scene:EffectAction = _effect.action.instantiate()
+        
+        if target_node:
+            target_node.add_child(_action_scene)
+        
+        _effect._instance_action = _action_scene
+    
+    # 添加标签
+    for _tag:String in _effect.tags:
+        target.add_tag(_tag)
+
+    _effect._timer = _timer
+    _effect._unit_node = target
+    _effect._applier_node = self
 
     _effect.start(target_node, target.unit)
     _timer.start()

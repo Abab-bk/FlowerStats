@@ -54,26 +54,6 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "Add Burning Status Effect."
 
-[node name="AddHealth" type="Button" parent="CanvasLayer/Actions"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-text = "Add Health Modifier."
-
-[node name="RemoveHealth" type="Button" parent="CanvasLayer/Actions"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-text = "Remove Health Modifier."
-
-[node name="AddStrength" type="Button" parent="CanvasLayer/Actions"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-text = "Add Strength Modifier."
-
-[node name="RemoveStrength" type="Button" parent="CanvasLayer/Actions"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-text = "Remove Strength Modifier."
-
 [node name="Player" parent="." instance=ExtResource("1_efql4")]
 unique_name_in_owner = true
 position = Vector2(132, 263)

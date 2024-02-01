@@ -1,3 +1,4 @@
+@icon("../../Icons/ModifierNode.svg")
 class_name ModifierNode extends Node
 
 @export var source:UnitNode

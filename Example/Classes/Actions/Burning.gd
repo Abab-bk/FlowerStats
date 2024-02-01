@@ -1,4 +1,4 @@
-class_name Burning extends EffectAction
+extends EffectAction
 
 
 func on_start() -> void:

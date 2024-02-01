@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="StatusEffect" load_steps=3 format=3 uid="uid://dhtla1rn31h8q"]
+
+[ext_resource type="Script" path="res://addons/FlowerStats/Scripts/StatusEffects/StatusEffect.gd" id="1_ds0kh"]
+[ext_resource type="PackedScene" uid="uid://cjnbowa8aebd3" path="res://Example/Prefabs/BurningEffect.tscn" id="1_p4f2g"]
+
+[resource]
+script = ExtResource("1_ds0kh")
+id = &"BurningEffect"
+tags = Array[StringName]([&"Burning"])
+max_stack = 1
+has_duration = true
+duration = 5.0
+allow_while_ticked = true
+remove_tags_on_finished = true
+action = ExtResource("1_p4f2g")

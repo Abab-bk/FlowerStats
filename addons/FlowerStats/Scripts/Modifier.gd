@@ -4,14 +4,14 @@ class_name Modifier extends Resource
 enum TYPE {
     CONSTANT, # +、-
     PERCENTAGE, # *、/
-    FORMULA,
+    # FORMULA,
 }
 
 
 @export var target:Stat
 @export var type:TYPE
 @export var value:float
-@export var formula:Formula
+# @export var formula:Formula
 
 var computed:bool = false
 

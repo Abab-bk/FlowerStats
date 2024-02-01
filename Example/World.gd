@@ -64,7 +64,7 @@ func _ready() -> void:
         player.remove_modifier(percentage_modifier_containers[_percentage_modifier_count].modifier)
         )
     add_burning_status_effect_btn.pressed.connect(func():
-        player.add_status_effect(load("res://Example/Classes/Effects/Burn.tres").duplicate(true))
+        player.add_status_effect(load("res://Example/Classes/Effects/Burning.tres"))
         )
     
 

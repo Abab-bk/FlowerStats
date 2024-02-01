@@ -1,16 +1,19 @@
 class_name Stat extends Resource
 
+signal value_changed(value:float)
+
 @export var id:StringName
 @export var base_value:float:
     set(v):
-        base_value = v
+        base_value = max(0, v)
         if final_value < base_value:
             final_value = base_value
+        recompute_final_value()
 
-            recompute_final_value()
-# @export var formula:Formula
-
-var final_value:float = 0.0
+var final_value:float = 0.0:
+    set(v):
+        final_value = v
+        value_changed.emit(final_value)
 var stack:Array[Modifier] = []
 
 var percentage_value:float = 0.0:
@@ -60,3 +63,23 @@ func pop_modifier_in_stack(_modifier:Modifier) -> void:
 
 func get_value() -> float:
     return final_value
+
+
+func set_value(_value:float) -> void:
+    base_value = _value
+    recompute_final_value()
+
+
+func decrease(_value:float) -> float:
+    if _value > base_value:
+        base_value -= _value
+        return base_value
+
+    base_value -= _value
+
+    return _value
+
+
+func increase(_value:float) -> float:
+    base_value += _value
+    return base_value

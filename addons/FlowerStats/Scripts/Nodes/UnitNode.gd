@@ -1,3 +1,4 @@
+@icon("../../Icons/UnitNode.svg")
 class_name UnitNode extends Node
 
 @export var unit:Unit
@@ -6,6 +7,17 @@ class_name UnitNode extends Node
 func _ready() -> void:
     recompute_all_stats()
 
+
+func add_tag(_tag:StringName) -> void:
+    unit.add_tag(_tag)
+
+
+func remove_tag(_tag:StringName) -> void:
+    unit.remove_tag(_tag)
+
+
+func has_tag(_tag:StringName) -> bool:
+    return unit.has_tag(_tag)
 
 
 func recompute_all_stats() -> void:
@@ -17,10 +29,11 @@ func recompute_all_stats() -> void:
 
 
 func get_attr_by_id(_id:StringName) -> Attribute:
-    for _attr:Attribute in unit.attrs:
-        if _attr.id == _id:
-            return _attr
-    return null
+    return unit.get_attr_by_id(_id)
+
+
+func get_stat_by_id(_id:StringName) -> Stat:
+    return unit.get_stat_by_id(_id)
 
 
 func get_attrs() -> Array[Attribute]:
