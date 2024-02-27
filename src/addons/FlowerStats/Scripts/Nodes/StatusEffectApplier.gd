@@ -5,7 +5,7 @@ class_name StatusEffectApplier extends Node
 @export var target:UnitNode
 @export var target_node:Node
 
-@export var effect_list:Array[StatusEffect] = []
+var effect_list:Array[StatusEffect] = []
 
 
 func apply(_effect:StatusEffect) -> void:
@@ -14,11 +14,7 @@ func apply(_effect:StatusEffect) -> void:
         return
 
     effect_list.append(_effect)
-    # 添加timer
-    var _timer:Timer = create_timer(_effect.duration)
-    add_child(_timer)
-    _timer.timeout.connect(_effect.finish)
-    
+
     # 添加场景
     if _effect.scene:
         var _scene = _effect.scene.instantiate()
@@ -40,12 +36,18 @@ func apply(_effect:StatusEffect) -> void:
     for _tag:String in _effect.tags:
         target.add_tag(_tag)
 
-    _effect._timer = _timer
     _effect._unit_node = target
     _effect._applier_node = self
 
     _effect.start(target_node, target.unit)
-    _timer.start()
+
+    # 添加timer
+    if _effect.has_duration:
+        var _timer:Timer = create_timer(_effect.duration)
+        add_child(_timer)
+        _timer.timeout.connect(_effect.finish)
+        _effect._timer = _timer
+        _timer.start()
 
 
 func check_same_element_count(_array:Array[StatusEffect], _effect:StatusEffect) -> int:

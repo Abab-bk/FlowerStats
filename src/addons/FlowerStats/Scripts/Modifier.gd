@@ -11,6 +11,7 @@ enum TYPE {
 @export var target:Stat
 @export var type:TYPE
 @export var value:float
+@export var mark_tags:Array[StringName]
 # @export var formula:Formula
 
 var computed:bool = false
@@ -53,6 +54,10 @@ func get_value() -> float:
 
 
 func push_self_in_target() -> void:
+    if not target:
+        push_error("target is null.")
+        return
+
     target.push_modifier(self)
 
 
@@ -62,3 +67,15 @@ func pop_self_in_target() -> void:
 
 func set_target(_target:Stat) -> void:
     target = _target
+
+
+func add_mark_tag(_tag:StringName) -> void:
+    mark_tags.append(_tag)
+
+
+func remove_mark_tag(_tag:StringName) -> void:
+    mark_tags.erase(_tag)
+
+
+func has_mark_tag(_tag:StringName) -> bool:
+    return mark_tags.has(_tag)

@@ -12,9 +12,11 @@ signal value_changed(value:float)
     set(v):
         current_value = v
         
-        if current_value:
-            if current_value.is_connected("value_changed", _set_internal_stat):
-                return
+        if not current_value:
+            return
+            
+        if current_value.is_connected("value_changed", _set_internal_stat):
+            return
         
         current_value.value_changed.connect(_set_internal_stat)
 

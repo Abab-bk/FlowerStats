@@ -11,10 +11,10 @@ signal finished
 @export var remove_tags_on_finished:bool = true
 
 @export_group("Effects")
+@export var scene:PackedScene
 @export var action:PackedScene:
     set(v):
         action = v
-@export var scene:PackedScene
 
 var _instance_scene:Node
 var _instance_action:EffectAction
@@ -22,7 +22,6 @@ var _instance_action:EffectAction
 var _timer:Timer
 var _unit_node:UnitNode
 var _applier_node:StatusEffectApplier
-
 
 
 func start(_target_node:Node, _target_unit:Unit) -> void:
