@@ -3,55 +3,53 @@ class_name ModifierNode extends Node
 
 @export var source:UnitNode
 @export var target:UnitNode
-@export var modifiers:Array[Modifier]
+@export var modifiers:Array[FlowerModifier]
 
 
-func add_modifier(_modifier:Modifier) -> void:
+func get_modifiers() -> Array[FlowerModifier]:
+    return modifiers
+
+
+func add_modifier(_modifier:FlowerModifier) -> void:
     modifiers.append(_modifier)
-    compute()
+    _compute()
 
 
-func remove_modifier(_modifier:Modifier) -> void:
-    # remove_compute()
-    
+func remove_modifier(_modifier:FlowerModifier) -> void:
     _modifier.pop_self_in_target()
     modifiers.erase(_modifier)
-    compute()
+    _compute()
 
 
-func compute() -> void:
-    var _percentage_modifiers:Array[Modifier] = []
-    var _constant_modifiers:Array[Modifier] = []
+func _compute() -> void:
+    var _percentage_modifiers:Array[FlowerModifier] = []
+    var _constant_modifiers:Array[FlowerModifier] = []
 
-    for _modifier:Modifier in modifiers:
+    for _modifier:FlowerModifier in modifiers:
         match _modifier.type:
-            Modifier.TYPE.PERCENTAGE:
+            FlowerModifier.TYPE.PERCENTAGE:
                 _percentage_modifiers.append(_modifier)
-            Modifier.TYPE.CONSTANT:
+            FlowerModifier.TYPE.CONSTANT:
                 _constant_modifiers.append(_modifier)
     
-    for _modifier:Modifier in _percentage_modifiers:
-        # _modifier.compute()
+    for _modifier:FlowerModifier in _percentage_modifiers:
         _modifier.push_self_in_target()
-    for _modifier:Modifier in _constant_modifiers:
-        # _modifier.compute()
+    for _modifier:FlowerModifier in _constant_modifiers:
         _modifier.push_self_in_target()
     
 
-func remove_compute() -> void:
-    var _percentage_modifiers:Array[Modifier] = []
-    var _constant_modifiers:Array[Modifier] = []
+func _remove_compute() -> void:
+    var _percentage_modifiers:Array[FlowerModifier] = []
+    var _constant_modifiers:Array[FlowerModifier] = []
 
-    for _modifier:Modifier in modifiers:
+    for _modifier:FlowerModifier in modifiers:
         match _modifier.type:
-            Modifier.TYPE.PERCENTAGE:
+            FlowerModifier.TYPE.PERCENTAGE:
                 _percentage_modifiers.append(_modifier)
-            Modifier.TYPE.CONSTANT:
+            FlowerModifier.TYPE.CONSTANT:
                 _constant_modifiers.append(_modifier)
     
-    for _modifier:Modifier in _percentage_modifiers:
+    for _modifier:FlowerModifier in _percentage_modifiers:
         _modifier.uninstall(false)
-        # _modifier.pop_self_in_target()
-    for _modifier:Modifier in _constant_modifiers:
+    for _modifier:FlowerModifier in _constant_modifiers:
         _modifier.uninstall(false)
-        # _modifier.pop_self_in_target()

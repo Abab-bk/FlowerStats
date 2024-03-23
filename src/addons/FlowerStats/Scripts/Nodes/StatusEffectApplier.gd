@@ -10,7 +10,7 @@ var effect_list:Array[StatusEffect] = []
 
 func apply(_effect:StatusEffect) -> void:
     # 检查 max_stack
-    if check_same_element_count(effect_list, _effect) >= _effect.max_stack:
+    if _check_same_element_count(effect_list, _effect) >= _effect.max_stack:
         return
 
     effect_list.append(_effect)
@@ -39,18 +39,18 @@ func apply(_effect:StatusEffect) -> void:
     _effect._unit_node = target
     _effect._applier_node = self
 
-    _effect.start(target_node, target.unit)
+    _effect._start(target_node, target.unit)
 
     # 添加timer
-    if _effect.has_duration:
-        var _timer:Timer = create_timer(_effect.duration)
+    if _effect.duration > 0:
+        var _timer:Timer = _create_timer(_effect.duration)
         add_child(_timer)
-        _timer.timeout.connect(_effect.finish)
+        _timer.timeout.connect(_effect._finish)
         _effect._timer = _timer
         _timer.start()
 
 
-func check_same_element_count(_array:Array[StatusEffect], _effect:StatusEffect) -> int:
+func _check_same_element_count(_array:Array[StatusEffect], _effect:StatusEffect) -> int:
     var _count:int = 0
 
     for _element:StatusEffect in _array:
@@ -60,7 +60,7 @@ func check_same_element_count(_array:Array[StatusEffect], _effect:StatusEffect) 
     return _count
 
 
-func create_timer(_time:float) -> Timer:
+func _create_timer(_time:float) -> Timer:
     var _timer:Timer = Timer.new()
     _timer.one_shot = true
     _timer.wait_time = _time

@@ -11,67 +11,62 @@ extends Node2D
 @onready var label:Label = %Label
 
 
-class modifier_container:
-    var modifier:Modifier = load("res://Example/Classes/Modifiers/AddMapHp.tres").duplicate()
+var _constant_modifiers:Array[FlowerModifier] = []
+var _percentage_modifiers:Array[FlowerModifier] = []
 
-class percentage_modifier_container:
-    var modifier:Modifier = load("res://Example/Classes/Modifiers/AddMaxHpPercentage.tres").duplicate()
-
-
-var modifier_containers:Array[modifier_container] = [
-    modifier_container.new(),
-    modifier_container.new(),
-    modifier_container.new(),
-]
-var percentage_modifier_containers:Array[percentage_modifier_container] = [
-    percentage_modifier_container.new(),
-    percentage_modifier_container.new(),
-    percentage_modifier_container.new(),
-]
-
-var _modifier_count:int = 0:
-    set(v):
-        _modifier_count = min(2, v)
-
-var _percentage_modifier_count:int = 0:
-    set(v):
-        _percentage_modifier_count = min(2, v)
 
 func _ready() -> void:
     add_max_hp_btn.pressed.connect(func():
-        if _modifier_count >= 2:
-            return
-        player.add_modifier(modifier_containers[_modifier_count].modifier)
-        _modifier_count += 1
+        player.add_modifier(get_new_modifier(Global.STATS.MaxHealth, FlowerModifier.TYPE.CONSTANT, 10))
         )
     remove_max_hp_btn.pressed.connect(func():
-        if _modifier_count == 0:
+        if _constant_modifiers.is_empty():
             return
-        _modifier_count -= 1
-        player.remove_modifier(modifier_containers[_modifier_count].modifier)
+        player.remove_modifier(_constant_modifiers[0])
+        _constant_modifiers.erase(_constant_modifiers[0])
         )
     
     add_max_hp_percentage_btn.pressed.connect(func():
-        if _percentage_modifier_count >= 2:
-            return
-        player.add_modifier(percentage_modifier_containers[_percentage_modifier_count].modifier)
-        _percentage_modifier_count += 1
+        player.add_modifier(get_new_modifier(Global.STATS.MaxHealth, FlowerModifier.TYPE.PERCENTAGE, 0.1))
         )
     remove_max_hp_percentage_btn.pressed.connect(func():
-        if _percentage_modifier_count == 0:
+        if _percentage_modifiers.is_empty():
             return
-        _percentage_modifier_count -= 1
-        player.remove_modifier(percentage_modifier_containers[_percentage_modifier_count].modifier)
+
+        player.remove_modifier(_percentage_modifiers[0])
+        _percentage_modifiers.erase(_percentage_modifiers[0])
         )
+
     add_burning_status_effect_btn.pressed.connect(func():
         player.add_status_effect(load("res://Example/Classes/Effects/Burning.tres"))
         )
     
 
+func get_new_modifier(_id:StringName, _operation:FlowerModifier.TYPE, _value:float) -> FlowerModifier:
+    var _modifier:FlowerModifier = FlowerModifier.new()\
+            .set_target(player.get_stat_by_id(_id))\
+            .set_type(_operation)\
+            .set_value(_value)
+    
+    if _operation == FlowerModifier.TYPE.CONSTANT:
+        _constant_modifiers.append(_modifier)
+    if _operation == FlowerModifier.TYPE.PERCENTAGE:
+        _percentage_modifiers.append(_modifier)
+
+    return _modifier
+
 
 func _physics_process(_delta:float) -> void:
+    if not player.get_attr_by_id(Global.STATS.Health):
+        return
+    update_ui()
+
+func update_ui() -> void:
     label.text = """
     Health: %s
     MaxHealth: %s
-    Strength: %s
-    """ % [str(player.get_attr_by_id("Health").get_value()), str(player.get_attr_by_id("Health").max_value.final_value), "test"]
+    Modifiers: %s
+    """ % [
+        str(player.get_attr_by_id(Global.STATS.Health).get_value()),
+        str(player.get_attr_by_id(Global.STATS.Health).get_max_value().get_value()),
+        str(player.get_modifiers().size())]

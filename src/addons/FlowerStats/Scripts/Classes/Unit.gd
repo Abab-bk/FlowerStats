@@ -11,6 +11,10 @@ signal tags_changed
         tags_changed.emit()
 
 
+func _init(_name:StringName = &"") -> void:
+    name = _name
+
+
 func has_tag(_tag:StringName) -> bool:
     return tags.has(_tag)
 
@@ -28,6 +32,18 @@ func remove_tag(_tag:StringName) -> void:
 func clear_all_tags() -> void:
     tags = []
 
+
+func add_attr(_attr:Attribute) -> void:
+    attrs.append(_attr)
+
+func add_stat(_stat:Stat) -> void:
+    stats.append(_stat)
+
+func remove_attr(_attr:Attribute) -> void:
+    attrs.erase(_attr)
+
+func remove_stat(_stat:Stat) -> void:
+    stats.erase(_stat)
 
 func get_attr_by_id(_id:StringName) -> Attribute:
     for _attr:Attribute in attrs:

@@ -28,6 +28,22 @@ func recompute_all_stats() -> void:
         _stat.recompute_final_value()
 
 
+func add_attr(_attr:Attribute) -> void:
+    unit.add_attr(_attr)
+
+
+func add_stat(_stat:Stat) -> void:
+    unit.add_stat(_stat)
+
+
+func remove_attr(_attr:Attribute) -> void:
+    unit.remove_attr(_attr)
+
+
+func remove_stat(_stat:Stat) -> void:
+    unit.remove_stat(_stat)
+
+
 func get_attr_by_id(_id:StringName) -> Attribute:
     return unit.get_attr_by_id(_id)
 

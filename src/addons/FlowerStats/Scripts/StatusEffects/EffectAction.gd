@@ -6,15 +6,15 @@ var target_node:Node
 var target_unit:Unit
 var scene:Node
 
-var allow_while_ticked:bool = false
+var _allow_while_ticked:bool = false
 
 func on_start() -> void:
-    if allow_while_ticked:
-        ticked.connect(while_active)
-    while_active()
+    if _allow_while_ticked:
+        ticked.connect(tick)
+    tick()
 
 
-func while_active() -> void:
+func tick() -> void:
     ticked.emit()
 
 

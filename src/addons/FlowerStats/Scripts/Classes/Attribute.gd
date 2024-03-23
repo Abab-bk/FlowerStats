@@ -46,13 +46,17 @@ var _value:float = 0:
         value_changed.emit(_value)
 
 
+func _init(_id:StringName = &"") -> void:
+    id = _id
+
+
 func _set_internal_stat(__value:float) -> void:
     _force_changed = true
     _value = __value
 
 
-func make_unique() -> void:
-    max_value = max_value.duplicate(true)
+func get_max_value() -> Stat:
+    return max_value
 
 
 func get_value() -> float:
@@ -63,8 +67,19 @@ func get_value_stat() -> Stat:
     return current_value
 
 
-func set_value(_value:float) -> void:
+func set_value(_value:float) -> Attribute:
     _value = _value
+    return self
+
+
+func set_id(_id:StringName) -> Attribute:
+    id = _id
+    return self
+
+
+func set_max_value(_max_value:Stat) -> Attribute:
+    max_value = _max_value
+    return self
 
 
 func recompute_stats() -> void:

@@ -5,8 +5,7 @@ signal finished
 @export var id:StringName
 @export var tags:Array[StringName]
 @export var max_stack:int = 1
-@export var has_duration:bool
-@export var duration:float
+@export var duration:float = 0.0
 @export var allow_while_ticked:bool = false
 @export var remove_tags_on_finished:bool = true
 
@@ -24,18 +23,18 @@ var _unit_node:UnitNode
 var _applier_node:StatusEffectApplier
 
 
-func start(_target_node:Node, _target_unit:Unit) -> void:
+func _start(_target_node:Node, _target_unit:Unit) -> void:
     if _target_node:
         _instance_action.target_node = _target_node
     if _target_unit:
         _instance_action.target_unit = _target_unit
     
-    _instance_action.allow_while_ticked = allow_while_ticked
+    _instance_action._allow_while_ticked = allow_while_ticked
     
     _instance_action.on_start()
 
 
-func finish() -> void:
+func _finish() -> void:
     if _timer:
         _timer.stop()
         _timer.queue_free()

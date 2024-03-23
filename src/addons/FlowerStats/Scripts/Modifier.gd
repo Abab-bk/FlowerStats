@@ -1,4 +1,4 @@
-class_name Modifier extends Resource
+class_name FlowerModifier extends Resource
 
 
 enum TYPE {
@@ -15,6 +15,31 @@ enum TYPE {
 # @export var formula:Formula
 
 var computed:bool = false
+
+
+func set_target(_target:Stat) -> FlowerModifier:
+    target = _target
+    return self
+
+
+func set_type(_type:TYPE) -> FlowerModifier:
+    type = _type
+    return self
+
+
+func set_value(_value:float) -> FlowerModifier:
+    value = _value
+    return self
+
+
+func add_mark_tag(_tag:StringName) -> FlowerModifier:
+    mark_tags.append(_tag)
+    return self
+
+
+func remove_mark_tag(_tag:StringName) -> FlowerModifier:
+    mark_tags.erase(_tag)
+    return self
 
 
 func compute() -> void:
@@ -64,17 +89,6 @@ func push_self_in_target() -> void:
 func pop_self_in_target() -> void:
     target.pop_modifier_in_stack(self)
 
-
-func set_target(_target:Stat) -> void:
-    target = _target
-
-
-func add_mark_tag(_tag:StringName) -> void:
-    mark_tags.append(_tag)
-
-
-func remove_mark_tag(_tag:StringName) -> void:
-    mark_tags.erase(_tag)
 
 
 func has_mark_tag(_tag:StringName) -> bool:
