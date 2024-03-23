@@ -8,7 +8,9 @@ In addition, there will be various content that affects these data, commonly ref
 
 FlowerStats aims to easily manage these data.
 
-Inspired by [Stats](https://docs.gamecreator.io/stats/).🧐Features🧐
+Inspired by [Stats](https://docs.gamecreator.io/stats/).
+
+## 🧐Features🧐
 
 * Modifier: Modify data through addition or multiplication.
 * Attribute: Maximum and minimum values.
@@ -22,11 +24,9 @@ Inspired by [Stats](https://docs.gamecreator.io/stats/).🧐Features🧐
 
 ## Usage
 
-I don't have time to write usage docs right now, check the source code for now, BUT! I will add docs later 😋
+I don't have time to write usage docs right now, check the source code or check example in this repo for now, BUT! I will add docs later 😋
 
-
-
-
+---
 
 99% 的 RPG 游戏都会存在某种统计数值，例如：血量、魔力、速度......
 
