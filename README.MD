@@ -24,7 +24,7 @@ Inspired by [Stats](https://docs.gamecreator.io/stats/).
 
 ## Usage
 
-I don't have time to write usage docs right now, check the source code or check example in this repo for now, BUT! I will add docs later 😋
+[Doc](https://btother.gitbook.io/flowerstats/)
 
 ---
 
@@ -55,4 +55,4 @@ FlowerStats 旨在轻松的管理这些数据。
 用法
 ------
 
-暂时没有时间写，看源码吧，BUT ! 我会添加😋
+[文档](https://btother.gitbook.io/flowerstats/)

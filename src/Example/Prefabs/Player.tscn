@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://x0qcbntngd67"]
+[gd_scene load_steps=11 format=3 uid="uid://x0qcbntngd67"]
 
 [ext_resource type="Script" path="res://Example/Player.gd" id="1_dp18k"]
 [ext_resource type="Texture2D" uid="uid://bd3vk0jrx5mfp" path="res://icon.svg" id="1_jna7r"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://addons/FlowerStats/Scripts/Nodes/ModifierNode.gd" id="4_kgyue"]
 [ext_resource type="Script" path="res://addons/FlowerStats/Scripts/Classes/Unit.gd" id="4_yp7cr"]
 [ext_resource type="Script" path="res://addons/FlowerStats/Scripts/Nodes/StatusEffectApplier.gd" id="6_70o03"]
+[ext_resource type="Script" path="res://addons/FlowerStats/Scripts/Modifier.gd" id="6_j1pih"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8oju8"]
 size = Vector2(122, 124)
@@ -16,6 +17,12 @@ name = "Player"
 attrs = Array[Resource("res://addons/FlowerStats/Scripts/Classes/Attribute.gd")]([])
 stats = Array[Resource("res://addons/FlowerStats/Scripts/Classes/Stat.gd")]([])
 tags = Array[StringName]([])
+
+[sub_resource type="Resource" id="Resource_48dp8"]
+script = ExtResource("6_j1pih")
+type = 0
+value = 0.0
+mark_tags = Array[StringName]([])
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_dp18k")
@@ -38,6 +45,7 @@ unique_name_in_owner = true
 script = ExtResource("4_kgyue")
 source = NodePath("../UnitNode")
 target = NodePath("../UnitNode")
+modifiers = Array[ExtResource("6_j1pih")]([SubResource("Resource_48dp8")])
 
 [node name="StatusEffectApplier" type="Node" parent="Stats" node_paths=PackedStringArray("target", "target_node")]
 unique_name_in_owner = true
